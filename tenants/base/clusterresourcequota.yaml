@@ -1,0 +1,13 @@
+apiVersion: quota.openshift.io/v1
+kind: ClusterResourceQuota
+metadata:
+  name: tenant
+spec:
+  selector:
+    labels:
+      matchLabels:
+        capsule.clastix.io/tenant: tenant
+  quota:
+    hard:
+      configmaps: "10"
+      secrets: "10"

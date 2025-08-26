@@ -1,0 +1,8 @@
+- Need to create namespaces, can't apply them
+- Need to add system:authenticated:oauth to userGroups
+- tenant-a shows how to set defaults in a base kustomization
+  - if we don't do this, we could put the defaults in the ansible automatin, but they would have to be hard coded in each overlay
+  - annoying if we have to update the defaults, need to script with yq or something to update
+- can't allow list labels/annotations for namespaces, need to deny list
+  - [feature request](https://github.com/projectcapsule/capsule/issues/1501)
+- Need to figure out installing with kustomize - currently just using helm install

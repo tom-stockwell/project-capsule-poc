@@ -1,0 +1,12 @@
+apiVersion: capsule.clastix.io/v1beta2
+kind: Tenant
+metadata:
+  name: tenant
+spec:
+  limitRanges:
+    items:
+      - limits:
+          - type: Container
+            defaultRequest:
+              cpu: 100m
+              memory: 100Mi

@@ -1,0 +1,11 @@
+crds:
+  install: false
+webhooks:
+  hooks:
+    nodes:
+      enabled: false
+certManager:
+  generateCertificates: true
+tls:
+  enableController: false
+  create: false

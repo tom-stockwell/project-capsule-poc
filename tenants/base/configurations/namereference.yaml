@@ -1,0 +1,5 @@
+nameReference:
+  - kind: Tenant
+    fieldSpecs:
+      - kind: ClusterResourceQuota
+        path: spec/selector/labels/matchLabels/capsule.clastix.io\/tenant
