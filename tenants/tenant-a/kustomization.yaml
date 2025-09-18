@@ -2,6 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../base
+
+  # proof of concept of allowing namespace provisioning with service accounts
+  # these resources would probably go in the tenant helm chart
+  - provisioner
 patches:
   - path: tenant.yaml
     target:

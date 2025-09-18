@@ -11,5 +11,7 @@ spec:
     validatingWebhookConfigurationName: capsule-validating-webhook-configuration
   protectedNamespaceRegex: "(kube-.*|openshift-.*)"
   userGroups:
-    - projectcapsule.dev
-    - system:authenticated:oauth
+    - developers
+
+    # regenerate these whenever a new tenant is added?
+    - system:serviceaccounts:tenant-a-init

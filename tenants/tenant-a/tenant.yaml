@@ -8,6 +8,8 @@ spec:
   owners:
     - kind: User
       name: developer
+    - kind: ServiceAccount
+      name: system:serviceaccount:tenant-a-init:provisioner
 
   # enforce labels / annotations on all tenant namespaces
   namespaceOptions:

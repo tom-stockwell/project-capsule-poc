@@ -1,0 +1,25 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tenant-capsule-provisioner-tenant-a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: capsule-namespace-provisioner
+subjects:
+- kind: ServiceAccount
+  name: provisioner
+  namespace: tenant-a-init
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tenant-capsule-deleter-tenant-a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: capsule-namespace-deleter
+subjects:
+  - kind: ServiceAccount
+    name: provisioner
+    namespace: tenant-a-init

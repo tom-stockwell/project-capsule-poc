@@ -1,0 +1,7 @@
+# need a group of all non-admin user accounts
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: developers
+users:
+  - developer
