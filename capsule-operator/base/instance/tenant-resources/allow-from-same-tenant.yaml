@@ -1,3 +1,5 @@
+# these would probably be better off as just values put in by the helm chart, or
+# using the namespace config operator or similar
 apiVersion: capsule.clastix.io/v1beta2
 kind: GlobalTenantResource
 metadata:
@@ -6,9 +8,8 @@ spec:
   resyncPeriod: 60s
   pruningOnDelete: true
   tenantSelector:
-    matchExpressions:
-      - key: kubernetes.io/metadata.name
-        operator: Exists
+    matchLabels:
+      netpol.tenant.example.com/allow-from-same-tenant: "true"
   resources:
     - rawItems:
         - apiVersion: networking.k8s.io/v1

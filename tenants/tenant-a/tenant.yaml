@@ -2,6 +2,8 @@ apiVersion: capsule.clastix.io/v1beta2
 kind: Tenant
 metadata:
   name: tenant-a
+  labels:
+    netpol.tenant.example.com/allow-from-same-tenant: "true"
 spec:
   owners:
     - kind: User
@@ -12,7 +14,7 @@ spec:
     additionalMetadata:
       labels:
         tenant.example.com/cost.centre: value
-        tenant.example.com/project: value
+        networkpolicies.example.com/allow-from-same-tenant: "true"
       annotations:
         tenant.example.com/contacts.primary: '{"name": "tenant-a-owner", "email": "tenant-a-owner@example.com"}'
 
