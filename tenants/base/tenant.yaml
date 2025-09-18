@@ -14,3 +14,4 @@ spec:
     additionalMetadata:
       labels:
         tenant.example.com/name: tenant
+        tenant.example.com/type: full

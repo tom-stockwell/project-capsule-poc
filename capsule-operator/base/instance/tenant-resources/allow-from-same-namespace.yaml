@@ -1,0 +1,24 @@
+apiVersion: capsule.clastix.io/v1beta2
+kind: GlobalTenantResource
+metadata:
+  name: allow-from-same-namespace
+spec:
+  resyncPeriod: 60s
+  pruningOnDelete: true
+  tenantSelector:
+    matchExpressions:
+      - key: kubernetes.io/metadata.name
+        operator: Exists
+  resources:
+    - rawItems:
+        - apiVersion: networking.k8s.io/v1
+          kind: NetworkPolicy
+          metadata:
+            name: allow-from-same-namespace
+          spec:
+            podSelector: {}
+            ingress:
+              - from:
+                  - podSelector: {}
+            policyTypes:
+              - Ingress

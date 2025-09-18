@@ -4,14 +4,17 @@ metadata:
   name: default
 spec:
   ingress:
-    - name: default-ingress
+    # note: ingress is not being denied here as the router uses the host network and is on the same node as the pod
+    - name: default-deny
       action: Allow
       from:
         - namespaces:
-            matchLabels:
-              kubernetes.io/metadata.name: openshift-ingress
+            matchExpressions:
+              - key: kubernetes.io/metadata.name
+                operator: Exists
+
   subject:
     namespaces:
       matchExpressions:
-        - key: capsule.clastix.io/tenant
+        - key: tenant.example.com/name
           operator: Exists
