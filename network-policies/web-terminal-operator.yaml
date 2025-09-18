@@ -1,0 +1,28 @@
+apiVersion: policy.networking.k8s.io/v1alpha1
+kind: AdminNetworkPolicy
+metadata:
+  name: web-terminal-operator
+spec:
+  priority: 100
+  subject:
+    namespaces:
+      matchExpressions:
+        - key: tenant.example.com/name
+          operator: Exists
+
+  ingress:
+    # required for the web terminal operator (perhaps move this to a different ANP?)
+    - name: allow-from-console
+      action: Allow
+      from:
+        - namespaces:
+            matchLabels:
+              network.openshift.io/policy-group: console
+
+    # required for the web terminal operator (perhaps move this to a different ANP?)
+    - name: allow-from-console
+      action: Allow
+      from:
+        - namespaces:
+            matchLabels:
+              kubernetes.io/metadata.name: openshift-operators

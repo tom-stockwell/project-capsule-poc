@@ -1,0 +1,30 @@
+apiVersion: policy.networking.k8s.io/v1alpha1
+kind: AdminNetworkPolicy
+metadata:
+  name: cluster-defaults
+spec:
+  priority: 100
+  subject:
+    namespaces:
+      matchExpressions:
+        - key: tenant.example.com/name
+          operator: Exists
+
+  ingress:
+    # note: openshift-ingress may not necessarily be denied if the router pod is on the same node as the destination pod
+    #       this is because the router uses the host network, which cannot be selected by network policies
+    #       Putting this here anyway to ensure it is always allowed
+    - name: allow-from-ingress
+      action: Allow
+      from:
+        - namespaces:
+            matchLabels:
+              network.openshift.io/policy-group: ingress
+
+    # allow monitoring to access tenant namespaces
+    - name: allow-from-monitoring
+      action: Allow
+      from:
+        - namespaces:
+            matchLabels:
+              network.openshift.io/policy-group: monitoring

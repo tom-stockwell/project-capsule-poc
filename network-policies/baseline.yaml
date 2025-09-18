@@ -3,8 +3,15 @@ kind: BaselineAdminNetworkPolicy
 metadata:
   name: default
 spec:
+  subject:
+    namespaces:
+      matchExpressions:
+        - key: tenant.example.com/name
+          operator: Exists
+
+  # note: openshift-ingress may not necessarily be denied if the router pod is on the same node as the destination pod
+  #       this is because the router uses the host network, which cannot be selected by network policies
   ingress:
-    # note: ingress is not being denied here as the router uses the host network and is on the same node as the pod
     - name: default-deny
       action: Allow
       from:
@@ -12,9 +19,3 @@ spec:
             matchExpressions:
               - key: kubernetes.io/metadata.name
                 operator: Exists
-
-  subject:
-    namespaces:
-      matchExpressions:
-        - key: tenant.example.com/name
-          operator: Exists
