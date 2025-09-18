@@ -3,6 +3,7 @@ kind: Tenant
 metadata:
   name: tenant-b
 spec:
+  # testing tenant namespace creation without prefix
   forceTenantPrefix: false
   owners:
   - kind: User

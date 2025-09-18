@@ -3,3 +3,5 @@ nameReference:
     fieldSpecs:
       - kind: ClusterResourceQuota
         path: spec/selector/labels/matchLabels/capsule.clastix.io\/tenant
+      - kind: Tenant
+        path: spec/namespaceOptions/additionalMetadata/labels/tenant.example.com\/name

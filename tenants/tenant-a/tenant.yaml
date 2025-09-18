@@ -4,12 +4,19 @@ metadata:
   name: tenant-a
 spec:
   owners:
-  - kind: User
-    name: developer
+    - kind: User
+      name: developer
+
+  # enforce labels / annotations on all tenant namespaces
   namespaceOptions:
     additionalMetadata:
       labels:
-        all-label: value
+        tenant.example.com/cost.centre: value
+        tenant.example.com/project: value
+      annotations:
+        tenant.example.com/contacts.primary: '{"name": "tenant-a-owner", "email": "tenant-a-owner@example.com"}'
+
+    # test enforcing labels on a particular namespace
     additionalMetadataList:
       - labels:
           different-label: value

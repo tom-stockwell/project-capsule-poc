@@ -10,3 +10,7 @@ spec:
             defaultRequest:
               cpu: 100m
               memory: 100Mi
+  namespaceOptions:
+    additionalMetadata:
+      labels:
+        tenant.example.com/name: tenant
