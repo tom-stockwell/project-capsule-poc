@@ -1,11 +1,26 @@
 crds:
   install: false
-webhooks:
-  hooks:
-    nodes:
-      enabled: false
-certManager:
-  generateCertificates: true
+
+manager:
+  hostUsers: false
+  options:
+    # setup users
+    administrators:
+      - kind: User
+        name: admin
+    users:
+      - kind: Group
+        name: system:authenticated:oauth
+
+    # other config
+    forceTenantPrefix: true
+    allowServiceAccountPromotion: true
+    protectedNamespaceRegex: "(kube-.*|openshift-.*)"
+
+# get tls working
 tls:
-  enableController: false
-  create: false
+  enableController: true
+certManager:
+  additionalSANS:
+    - capsule-webhook-service
+    - capsule-webhook-service.capsule-system

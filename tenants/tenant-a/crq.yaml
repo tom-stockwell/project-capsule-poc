@@ -3,10 +3,6 @@ kind: ClusterResourceQuota
 metadata:
   name: tenant-a
 spec:
-  selector:
-    labels:
-      matchLabels:
-        capsule.clastix.io/tenant: tenant-a
   quota:
     hard:
-      configmaps: "1"
+      configmaps: "100"

@@ -5,14 +5,4 @@ metadata:
 spec:
   owners:
   - kind: User
-    name: developer
-  namespaceOptions:
-    additionalMetadata:
-      labels:
-        all-label: value
-    additionalMetadataList:
-      - labels:
-          different-label: value
-        namespaceSelector:
-          matchLabels:
-            kubernetes.io/metadata.name: tenant-a-test
+    name: user1

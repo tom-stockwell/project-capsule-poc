@@ -1,9 +1,0 @@
-apiVersion: capsule.clastix.io/v1beta2
-kind: Tenant
-metadata:
-  name: tenant-b
-spec:
-  forceTenantPrefix: false
-  owners:
-  - kind: User
-    name: developer
