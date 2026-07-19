@@ -8,6 +8,10 @@ manager:
     administrators:
       - kind: User
         name: admin
+#      - kind: ServiceAccount
+#        name: system:serviceaccount:openshift-kube-controller-manager:kube-controller-manager-sa
+#      - kind: ServiceAccount
+#        name: system:serviceaccount:openshift-kube-controller-manager:default
     users:
       - kind: Group
         name: system:authenticated:oauth
